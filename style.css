@@ -1,0 +1,187 @@
+
+:root {
+  --bg-top: #7fd3ff;
+  --bg-mid: #b9ecff;
+  --bg-bot: #c8f7ff;
+  --green-1: #46c655;
+  --green-2: #2ea542;
+  --btn: #ff5e7e;
+  --btn-hover: #ff7f99;
+  --ink: #1b1f2a;
+  --card: #ffffff;
+  --shadow: rgba(0,0,0,.15);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--ink);
+  background: linear-gradient(var(--bg-top), var(--bg-mid) 60%, var(--bg-bot));
+  overflow-x: hidden;
+}
+
+.container {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+.hero {
+  display: grid;
+  place-items: center;
+  padding: 40px 16px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 18px;
+  padding: 28px 24px;
+  width: min(980px, 92vw);
+  box-shadow: 0 14px 40px var(--shadow);
+  position: relative;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.title img.logo {
+  width: 56px; height: 56px;
+}
+
+.title h1 {
+  margin: 0;
+  font-size: clamp(28px, 3.4vw, 44px);
+  line-height: 1.1;
+}
+
+.subtitle {
+  margin: 6px 0 0 72px;
+  opacity: .8;
+}
+
+.hero-art {
+  width: 100%;
+  margin: 12px 0 18px;
+  border-radius: 12px;
+  background: linear-gradient(#a8e9ff, #d7f7ff);
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.05);
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16/9;
+}
+
+#art {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.btn-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.button {
+  appearance: none;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 20px;
+  background: var(--btn);
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: .2px;
+  box-shadow: 0 6px 16px rgba(255, 94, 126, .35);
+  cursor: pointer;
+  transition: transform .06s ease, background .2s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.button:hover { background: var(--btn-hover); }
+.button:active { transform: translateY(1px); }
+
+.foot {
+  padding: 18px 18px 28px;
+  text-align: center;
+  opacity: .7;
+  font-size: 14px;
+}
+
+/* Animated clouds */
+.clouds {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.cloud {
+  position: absolute;
+  top: 8%;
+  width: 260px;
+  height: 120px;
+  background: #fff;
+  opacity: .7;
+  border-radius: 100px;
+  filter: blur(0.5px);
+  animation: drift linear infinite;
+}
+.cloud:before, .cloud:after {
+  content: "";
+  position: absolute;
+  background: #fff;
+  width: 160px; height: 120px;
+  border-radius: 50%;
+  left: 20px; top: -30px;
+}
+.cloud:after {
+  width: 190px; height: 140px;
+  left: 90px; top: -20px;
+}
+
+.cloud.c2 { top: 18%; width: 320px; left: -30%; opacity: .68; animation-duration: 75s; }
+.cloud.c3 { top: 32%; width: 220px; left: -20%; opacity: .75; animation-duration: 60s; }
+.cloud.c4 { top: 46%; width: 280px; left: -25%; opacity: .6; animation-duration: 90s; }
+.cloud.c5 { top: 12%; width: 180px; left: -18%; opacity: .65; animation-duration: 55s; }
+
+@keyframes drift {
+  0%   { transform: translateX(-10vw); }
+  100% { transform: translateX(120vw); }
+}
+
+/* Swaying grass */
+.grass {
+  position: absolute;
+  bottom: -2px;
+  left: -2px;
+  right: -2px;
+  height: 120px;
+  background: linear-gradient(var(--green-1), var(--green-2));
+  box-shadow: 0 -1px 0 rgba(0,0,0,.06) inset;
+  overflow: hidden;
+}
+.blade {
+  position: absolute;
+  bottom: 0;
+  width: 6px;
+  background: #2fa446;
+  transform-origin: bottom center;
+  animation: sway ease-in-out infinite;
+}
+@keyframes sway {
+  0% { transform: rotate(-2deg); }
+  50% { transform: rotate(3deg); }
+  100% { transform: rotate(-2deg); }
+}
